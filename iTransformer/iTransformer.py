@@ -3,8 +3,7 @@ from torch import nn, einsum, Tensor
 from torch.nn import Module, ModuleList
 import torch.nn.functional as F
 
-from beartype import beartype
-from beartype.typing import Optional, Union, Tuple
+from typing import Optional, Union, Tuple
 
 from einops import rearrange, reduce, repeat, pack, unpack
 from einops.layers.torch import Rearrange
@@ -113,7 +112,6 @@ def FeedForward(dim, mult = 4, dropout = 0.):
 # main class
 
 class iTransformer(Module):
-    @beartype
     def __init__(
         self,
         *,
@@ -174,7 +172,6 @@ class iTransformer(Module):
 
             self.pred_heads.append(head)
 
-    @beartype
     def forward(
         self,
         x: Tensor,

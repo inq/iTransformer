@@ -18,7 +18,6 @@ setup(
     'time series forecasting'
   ],
   install_requires=[
-    'beartype',
     'einops>=0.8.0',
     'hyper-connections>=0.0.14',
     'gateloop-transformer>=0.2.3',

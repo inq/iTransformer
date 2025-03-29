@@ -3,8 +3,7 @@ from torch import nn, einsum, Tensor
 from torch.nn import Module, ModuleList
 import torch.nn.functional as F
 
-from beartype import beartype
-from beartype.typing import Optional, Union, Tuple
+from typing import Optional, Union, Tuple
 
 # to understand Alex's brilliant (un)pack abstraction, please go through the following tutorial
 # https://github.com/arogozhnikov/einops/blob/master/docs/4-pack-and-unpack.ipynb
@@ -79,7 +78,6 @@ class Attention(Module):
             nn.Dropout(dropout)
         )
 
-    @beartype
     def forward(self, x):
         q, k, v = self.to_qkv(x)
 
@@ -144,7 +142,6 @@ class TransformerBlock(Module):
 # main class
 
 class iTransformer2D(Module):
-    @beartype
     def __init__(
         self,
         *,
@@ -225,7 +222,6 @@ class iTransformer2D(Module):
 
             self.pred_heads.append(head)
 
-    @beartype
     def forward(
         self,
         x: Tensor,
